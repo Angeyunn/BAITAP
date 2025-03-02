@@ -5,24 +5,23 @@
 using namespace std;
 
 int generateRandomNumber() {
-    return rand() % 100 + 1; // T?o s? ng?u nhi�n t? 1 d?n 100
+    return rand() % 100 + 1; // Tạo số ngẫu nhiên từ 1 đến 100
 }
 
 int main() {
     srand(time(0));
-    int random_number = generateRandomNumber(); // G?i h�m t?o s? ng?u nhi�n
+    int random_number = generateRandomNumber(); // Gọi hàm tạo số ngẫu nhiên
     int a, count = 0;
     bool choitiep = true;
     char b;
-    int score = 10000; // �i?m kh?i d?u
+    int score = 10000; // Điểm khởi đầu
 
-    // V�ng l?p ch�nh c?a tr� choi
     while (choitiep) {
         cout << "Nhap so cua ban (1-100): ";
         cin >> a;
-        count++; // Tang bi?n d?m m?i l?n do�n
+        count++; // Tăng biến đếm mỗi lần đoán
 
-        // Ki?m tra s? d? do�n
+        // Kiểm tra số dự đoán
         if (a > random_number) {
             cout << "Your number is too high" << endl;
         } else if (a < random_number) {
@@ -33,25 +32,24 @@ int main() {
             cin >> b;
 
             if (b == 'N' || b == 'n') {
-                choitiep = false; // K?t th�c tr� choi
+                choitiep = false; // Kết thúc trò chơi
             } else if (b == 'Y' || b == 'y') {
-                // Kh?i t?o l?i s? ng?u nhi�n v� d?m l?i
-                random_number = generateRandomNumber(); // G?i h�m t?o s? ng?u nhi�n
+                // Khởi tạo lại số ngẫu nhiên và đếm lại
+                random_number = generateRandomNumber(); // Gọi hàm tạo số ngẫu nhiên
                 count = 0;
-                score = 10000; // �?t l?i di?m kh?i d?u
+                score = 10000; // Đặt lại điểm khởi đầu
             } else {
                 cout << "Invalid input! Exiting game." << endl;
-                choitiep = false; // Tho�t tr� choi khi nh?n input kh�ng h?p l?
+                choitiep = false; // Thoát trò chơi khi nhận input không hợp lệ
             }
         }
 
-        // Gi?m di?m theo s? l?n do�n sai
+        // Giảm điểm theo số lần đoán sai
         score -= 2 * (100 - count);
     }
 
-    // Hi?n th? di?m s? c?a ngu?i choi
+    // Hiển thị điểm số của người chơi
     cout << endl << "Your final score is: " << score << endl;
 
     return 0;
 }
-
